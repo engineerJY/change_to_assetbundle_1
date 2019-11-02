@@ -1,0 +1,2 @@
+# change_to_assetbundle_1
+完成プロジェクトをアセットバンドル化する
