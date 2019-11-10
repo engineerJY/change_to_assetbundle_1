@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EditorBuild
 {
@@ -38,6 +39,7 @@ public class EditorBuild
         BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, BuildTarget.WebGL);
     }
 
+    [MenuItem("EditorBuild/BuildAndroid")]
     public static void BuildAndroid()
     {
         /*
@@ -46,6 +48,7 @@ public class EditorBuild
 		EditorApplication.Exit(status ? 0 : 1);
         */
 
+        Debug.Log("Android Build Start");
 
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
 
@@ -55,7 +58,7 @@ public class EditorBuild
         {
             if (scene.enabled)
             {
-                //Debug.Log(scene.path);
+                Debug.Log(scene.path);
                 allScene.Add(scene.path);
             }
         }
@@ -64,13 +67,14 @@ public class EditorBuild
         PlayerSettings.statusBarHidden = true;
         var a = BuildPipeline.BuildPlayer(
             allScene.ToArray(),
-            "/Documentation/Build/Android/changeToAssetbundle_1.apk",
+            //"/Documentation/Build/Android/changeToAssetbundle_1.apk",
+            Application.dataPath + "Android/changeToAssetbundle_1.apk",
             BuildTarget.Android,
             BuildOptions.None
         );
 
 
-
+        Debug.Log("Build End");
 
     }
 
