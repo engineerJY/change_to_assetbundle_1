@@ -52,11 +52,11 @@ public class EditorBuild
             }
         }
 
-        PlayerSettings.applicationIdentifier = "com.EngineerBlog.GameAction2";
+        PlayerSettings.applicationIdentifier = "com.EngineerBlog.ChangeToAssetbundle_1";
         PlayerSettings.statusBarHidden = true;
         var a = BuildPipeline.BuildPlayer(
             allScene.ToArray(),
-            "/Documentation/Build/Android/gameaction2.apk",
+            "/Documentation/Build/Android/changeToAssetbundle_1.apk",
             BuildTarget.Android,
             BuildOptions.None
         );
