@@ -16,7 +16,17 @@ public class AssetLoad : MonoBehaviour
 
     IEnumerator LoadAsset()
     {
-        //UnityWebRequestAssetBundle.GetAssetBundle();
+        var request = UnityWebRequestAssetBundle.GetAssetBundle("http://118.27.18.220/assets/texture.pack");
+        request.SendWebRequest();
+
+        while(!request.isDone)
+        {
+            Debug.Log("wait request");
+            yield return null;
+        }
+
+
+        var assetBundleA = DownloadHandlerAssetBundle.GetContent(request);
 
         yield break;
     }
