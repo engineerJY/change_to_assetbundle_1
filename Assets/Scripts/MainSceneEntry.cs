@@ -8,12 +8,16 @@ public class MainSceneEntry : SingletonMonoBehaviour<MainSceneEntry>
     [SerializeField]
     Image fade = null;
 
+
+
+
+
     void Awake()
     {
         Debug.Log("MainSecneEntry Awake");
 
-
-
+        //JohnLemon
+        var go = Instantiate(AssetLoad.Instance.assetsPrefabs["JohnLemon"]);
 
 
         fade.gameObject.SetActive(false);
