@@ -4,19 +4,21 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class AssetLoad : MonoBehaviour
+public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
 {
-    // Start is called before the first frame update
+    Dictionary<string, AudioClip> assetsAudioClips = new Dictionary<string, AudioClip>();
+
+    const string DOWNLOAD_URL = "http://118.27.18.220/assetbundles/ChangeToAssetBundle1";
     IEnumerator Start()
     {
         yield return StartCoroutine(LoadAsset());
 
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Additive);
     }
 
     IEnumerator LoadAsset()
     {
-        var request = UnityWebRequestAssetBundle.GetAssetBundle("http://118.27.18.220/assets/texture.pack");
+        var request = UnityWebRequestAssetBundle.GetAssetBundle(DOWNLOAD_URL + "/audio.pack");
         request.SendWebRequest();
 
         while(!request.isDone)
@@ -25,8 +27,17 @@ public class AssetLoad : MonoBehaviour
             yield return null;
         }
 
+        Debug.Log("load done!");
 
         var assetBundleA = DownloadHandlerAssetBundle.GetContent(request);
+
+
+
+        var audioA = assetBundleA.LoadAsset<AudioClip>("SFXHouseAmbience.wav");
+
+        Debug.Log(audioA == null);
+
+        Debug.Log(audioA.name);
 
         yield break;
     }
