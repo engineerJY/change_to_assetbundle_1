@@ -30,6 +30,7 @@ public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
     /// Prefabのアセットバンドルを保持
     /// </summary>
     public Dictionary<string, GameObject> assetsPrefabs = new Dictionary<string, GameObject>();
+    public Dictionary<string, AudioClip> assetsAudioClips = new Dictionary<string, AudioClip>();
 
     IEnumerator Start()
     {
@@ -74,15 +75,22 @@ public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
         {
             case ObjectType.Animation: break;
             case ObjectType.Animator: break;
-            case ObjectType.AudioClip: break;
+            case ObjectType.AudioClip:
+                var assets = assetBundle.LoadAllAssets<AudioClip>();
+                foreach (var a in assets)
+                {
+                    Debug.Log(a.name);
+                    assetsAudioClips.Add(a.name, a);
+                }
+                break;
             case ObjectType.Shader: break;
             case ObjectType.Texture: break;
             case ObjectType.Material: break;
             case ObjectType.Model: break;
                 
             case ObjectType.Prefab:
-                var assets = assetBundle.LoadAllAssets<GameObject>();
-                foreach (var a in assets)
+                var assetsp = assetBundle.LoadAllAssets<GameObject>();
+                foreach (var a in assetsp)
                 {
                     Debug.Log(a.name);
                     assetsPrefabs.Add(a.name, a);
@@ -103,6 +111,6 @@ public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
     public Dictionary<string, Object> assetsObjects = new Dictionary<string, Object>();
     public Dictionary<string, Animation> assetsAnimations = new Dictionary<string, Animation>();
     public Dictionary<string, Animator> assetsAnimators = new Dictionary<string, Animator>();
-    public Dictionary<string, AudioClip> assetsAudioClips = new Dictionary<string, AudioClip>();
+    
     
  */

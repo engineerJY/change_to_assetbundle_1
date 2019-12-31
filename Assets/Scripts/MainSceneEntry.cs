@@ -15,6 +15,9 @@ public class MainSceneEntry : SingletonMonoBehaviour<MainSceneEntry>
     Transform[] wayPoint = null;
 
     [SerializeField]
+    AudioSource audioAmbient = null;
+
+    [SerializeField]
     AudioSource audioWin = null;
 
     [SerializeField]
@@ -52,6 +55,10 @@ public class MainSceneEntry : SingletonMonoBehaviour<MainSceneEntry>
     void Awake()
     {
         Debug.Log("MainSecneEntry Awake");
+
+        audioAmbient.clip = AssetLoad.Instance.assetsAudioClips["SFXHouseAmbience"];
+        audioWin.clip = AssetLoad.Instance.assetsAudioClips["SFXWin"];
+        audioCaught.clip = AssetLoad.Instance.assetsAudioClips["SFXGameOver"];
 
         //実体化するPrefabの座標などパラメータ設定
 
