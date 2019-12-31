@@ -23,4 +23,9 @@ public class WaypointPatrol : MonoBehaviour
             navMeshAgent.SetDestination (waypoints[m_CurrentWaypointIndex].position);
         }
     }
+
+    public void SetParam(Transform[] transforms)
+    {
+        waypoints = transforms;
+    }
 }

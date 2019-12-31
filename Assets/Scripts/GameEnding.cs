@@ -15,6 +15,19 @@ public class GameEnding : MonoBehaviour
     bool m_IsPlayerCaught;
     float m_Timer;
     bool m_HasAudioPlayed;
+
+    public void SetParam(int fadeDuration, int displayImageDuration, GameObject player,
+        CanvasGroup exitBackgroundImageCanvasGroup, AudioSource exitAudio,
+        CanvasGroup caughtBackgroundImageCanvasGroup, AudioSource caughtAudio)
+    {
+        this.fadeDuration = fadeDuration;
+        this.displayImageDuration = displayImageDuration;
+        this.player = player;
+        this.exitBackgroundImageCanvasGroup = exitBackgroundImageCanvasGroup;
+        this.exitAudio = exitAudio;
+        this.caughtBackgroundImageCanvasGroup = caughtBackgroundImageCanvasGroup;
+        this.caughtAudio = caughtAudio;
+    }
     
     void OnTriggerEnter (Collider other)
     {

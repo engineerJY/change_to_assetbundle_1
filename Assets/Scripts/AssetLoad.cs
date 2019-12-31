@@ -30,7 +30,7 @@ public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
     /// Prefabのアセットバンドルを保持
     /// </summary>
     public Dictionary<string, GameObject> assetsPrefabs = new Dictionary<string, GameObject>();
-    
+
     IEnumerator Start()
     {
         //Prefabが参照するアセットバンドルをダウンロード
@@ -104,4 +104,5 @@ public class AssetLoad : SingletonMonoBehaviour<AssetLoad>
     public Dictionary<string, Animation> assetsAnimations = new Dictionary<string, Animation>();
     public Dictionary<string, Animator> assetsAnimators = new Dictionary<string, Animator>();
     public Dictionary<string, AudioClip> assetsAudioClips = new Dictionary<string, AudioClip>();
+    
  */
